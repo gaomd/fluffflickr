@@ -1,7 +1,7 @@
 {
-    "name": "gaomd/phlickr",
+    "name": "gaomd/farmr",
     "type": "library",
-    "description": "An Flickr API SDK.",
+    "description": "A Flickr API SDK.",
     "keywords": [
         "flickr",
         "api",
@@ -17,7 +17,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Phlickr\\": "src/"
+            "Farmr\\": "src/"
         }
     },
     "require": {

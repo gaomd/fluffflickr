@@ -1,15 +1,15 @@
 <?php
 
-namespace Phlickr;
+namespace Farmr;
 
-use Phlickr\Exception\FlickrErrorException;
+use Farmr\Exception\FlickrErrorException;
 use Psr\Http\Message\ResponseInterface;
 
 class Results implements \ArrayAccess
 {
 
     /**
-     * @var \Phlickr\Resource
+     * @var \Farmr\Resource
      */
     protected $resource;
 
@@ -24,7 +24,7 @@ class Results implements \ArrayAccess
     protected $container = [];
 
     /**
-     * @param \Phlickr\Resource $resource
+     * @param \Farmr\Resource $resource
      * @param \Psr\Http\Message\ResponseInterface $response
      */
     public function __construct(Resource $resource, ResponseInterface $response)

@@ -1,6 +1,6 @@
 <?php
 
-namespace Phlickr\Exception;
+namespace Farmr\Exception;
 
 class FlickrErrorException extends \RuntimeException
 {

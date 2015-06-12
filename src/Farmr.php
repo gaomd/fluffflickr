@@ -1,8 +1,8 @@
 <?php
 
-namespace Phlickr;
+namespace Farmr;
 
-class Phlickr
+class Farmr
 {
 
     /**
@@ -12,7 +12,7 @@ class Phlickr
 
     /**
      * @param $childResource
-     * @return \Phlickr\Resource
+     * @return \Farmr\Resource
      */
     public function __get($childResource)
     {

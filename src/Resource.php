@@ -1,6 +1,6 @@
 <?php
 
-namespace Phlickr;
+namespace Farmr;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Request;
@@ -9,7 +9,7 @@ class Resource
 {
 
     /**
-     * @var \Phlickr\Phlickr
+     * @var \Farmr\Farmr
      */
     protected $flickr;
 
@@ -65,11 +65,11 @@ class Resource
     ];
 
     /**
-     * @param \Phlickr\Phlickr $flickr
+     * @param \Farmr\Farmr $flickr
      * @param string $parentResource
      * @param string $resource
      */
-    public function __construct(Phlickr $flickr, $parentResource, $resource)
+    public function __construct(Farmr $flickr, $parentResource, $resource)
     {
         $this->flickr = $flickr;
         $this->method = "$parentResource.$resource";
@@ -77,7 +77,7 @@ class Resource
 
     /**
      * @param $childResource
-     * @return \Phlickr\Resource
+     * @return \Farmr\Resource
      */
     public function __get($childResource)
     {
@@ -87,7 +87,7 @@ class Resource
     /**
      * @param $childResource
      * @param $args
-     * @return \Phlickr\Results
+     * @return \Farmr\Results
      */
     public function __call($childResource, $args)
     {
@@ -96,7 +96,7 @@ class Resource
 
     /**
      * @param array $parameters
-     * @return \Phlickr\Results
+     * @return \Farmr\Results
      */
     public function __invoke(array $parameters = [])
     {

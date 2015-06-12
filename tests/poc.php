@@ -2,13 +2,13 @@
 
 require(dirname(dirname(__FILE__)) . '/vendor/autoload.php');
 
-$flickr = new \Phlickr\Phlickr();
+$flickr = new \Farmr\Farmr();
 
 $dotEnv = new Dotenv\Dotenv(dirname(dirname(__FILE__)));
 $dotEnv->load();
 $dotEnv->required('FLICKR_API_KEY');
 
-/** @var \Phlickr\Results $results */
+/** @var \Farmr\Results $results */
 $results = $flickr->test->echo(['foo' => 'bar']);
 
 if ($results->isOk() && isset($results['foo']['_content']) && $results['foo']['_content'] === 'bar') {
