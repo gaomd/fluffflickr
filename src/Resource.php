@@ -72,7 +72,7 @@ class Resource
     public function __construct(Phlickr $flickr, $parentResource, $resource)
     {
         $this->flickr = $flickr;
-        $this->method .= "$parentResource.$resource";
+        $this->method = "$parentResource.$resource";
     }
 
     /**
