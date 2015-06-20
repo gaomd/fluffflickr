@@ -1,3 +1,3 @@
-# Farmr
+# Fluentickr
 
-A Flickr API SDK written in PHP.
+A fluent interface to Flickr API written in PHP.

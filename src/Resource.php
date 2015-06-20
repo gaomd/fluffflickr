@@ -1,207 +1,207 @@
 <?php
 
-namespace Farmr;
+namespace Fluentickr;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Request;
 
 /**
- * @property-read \Farmr\Resource $activity
- * @property-read \Farmr\Resource $auth
- * @property-read \Farmr\Resource $blogs
- * @property-read \Farmr\Resource $cameras
- * @property-read \Farmr\Resource $collections
- * @property-read \Farmr\Resource $comments
- * @property-read \Farmr\Resource $commons
- * @property-read \Farmr\Resource $contacts
- * @property-read \Farmr\Resource $discuss
- * @property-read \Farmr\Resource $favorites
- * @property-read \Farmr\Resource $galleries
- * @property-read \Farmr\Resource $geo
- * @property-read \Farmr\Resource $groups
- * @property-read \Farmr\Resource $interestingness
- * @property-read \Farmr\Resource $licenses
- * @property-read \Farmr\Resource $machinetags
- * @property-read \Farmr\Resource $members
- * @property-read \Farmr\Resource $notes
- * @property-read \Farmr\Resource $oauth
- * @property-read \Farmr\Resource $panda
- * @property-read \Farmr\Resource $people
- * @property-read \Farmr\Resource $photos
- * @property-read \Farmr\Resource $photosets
- * @property-read \Farmr\Resource $places
- * @property-read \Farmr\Resource $pools
- * @property-read \Farmr\Resource $prefs
- * @property-read \Farmr\Resource $push
- * @property-read \Farmr\Resource $reflection
- * @property-read \Farmr\Resource $replies
- * @property-read \Farmr\Resource $stats
- * @property-read \Farmr\Resource $suggestions
- * @property-read \Farmr\Resource $tags
- * @property-read \Farmr\Resource $test
- * @property-read \Farmr\Resource $topics
- * @property-read \Farmr\Resource $transform
- * @property-read \Farmr\Resource $upload
- * @property-read \Farmr\Resource $urls
- * @method \Farmr\Results add(array $params = [])
- * @method \Farmr\Results addComment(array $params = [])
- * @method \Farmr\Results addPhoto(array $params = [])
- * @method \Farmr\Results addTags(array $params = [])
- * @method \Farmr\Results approveSuggestion(array $params = [])
- * @method \Farmr\Results batchCorrectLocation(array $params = [])
- * @method \Farmr\Results browse(array $params = [])
- * @method \Farmr\Results checkTickets(array $params = [])
- * @method \Farmr\Results checkToken(array $params = [])
- * @method \Farmr\Results correctLocation(array $params = [])
- * @method \Farmr\Results create(array $params = [])
- * @method \Farmr\Results delete(array $params = [])
- * @method \Farmr\Results deleteComment(array $params = [])
- * @method \Farmr\Results deleteCoords(array $params = [])
- * @method \Farmr\Results echo (array $params = [])
- * @method \Farmr\Results edit(array $params = [])
- * @method \Farmr\Results editComment(array $params = [])
- * @method \Farmr\Results editCoords(array $params = [])
- * @method \Farmr\Results editMeta(array $params = [])
- * @method \Farmr\Results editPhoto(array $params = [])
- * @method \Farmr\Results editPhotos(array $params = [])
- * @method \Farmr\Results find(array $params = [])
- * @method \Farmr\Results findByEmail(array $params = [])
- * @method \Farmr\Results findByLatLon(array $params = [])
- * @method \Farmr\Results findByUsername(array $params = [])
- * @method \Farmr\Results getAccessToken(array $params = [])
- * @method \Farmr\Results getAllContexts(array $params = [])
- * @method \Farmr\Results getBrandModels(array $params = [])
- * @method \Farmr\Results getBrands(array $params = [])
- * @method \Farmr\Results getCSVFiles(array $params = [])
- * @method \Farmr\Results getChildrenWithPhotosPublic(array $params = [])
- * @method \Farmr\Results getClusterPhotos(array $params = [])
- * @method \Farmr\Results getClusters(array $params = [])
- * @method \Farmr\Results getCollectionDomains(array $params = [])
- * @method \Farmr\Results getCollectionReferrers(array $params = [])
- * @method \Farmr\Results getCollectionStats(array $params = [])
- * @method \Farmr\Results getContactsPhotos(array $params = [])
- * @method \Farmr\Results getContactsPublicPhotos(array $params = [])
- * @method \Farmr\Results getContentType(array $params = [])
- * @method \Farmr\Results getContext(array $params = [])
- * @method \Farmr\Results getCounts(array $params = [])
- * @method \Farmr\Results getExif(array $params = [])
- * @method \Farmr\Results getFavorites(array $params = [])
- * @method \Farmr\Results getFrob(array $params = [])
- * @method \Farmr\Results getFullToken(array $params = [])
- * @method \Farmr\Results getGeoPerms(array $params = [])
- * @method \Farmr\Results getGroup(array $params = [])
- * @method \Farmr\Results getGroups(array $params = [])
- * @method \Farmr\Results getHidden(array $params = [])
- * @method \Farmr\Results getHotList(array $params = [])
- * @method \Farmr\Results getInfo(array $params = [])
- * @method \Farmr\Results getInfoByUrl(array $params = [])
- * @method \Farmr\Results getInstitutions(array $params = [])
- * @method \Farmr\Results getLimits(array $params = [])
- * @method \Farmr\Results getList(array $params = [])
- * @method \Farmr\Results getListForPhoto(array $params = [])
- * @method \Farmr\Results getListPhoto(array $params = [])
- * @method \Farmr\Results getListRecentlyUploaded(array $params = [])
- * @method \Farmr\Results getListUser(array $params = [])
- * @method \Farmr\Results getListUserPopular(array $params = [])
- * @method \Farmr\Results getListUserRaw(array $params = [])
- * @method \Farmr\Results getLocation(array $params = [])
- * @method \Farmr\Results getMethodInfo(array $params = [])
- * @method \Farmr\Results getMethods(array $params = [])
- * @method \Farmr\Results getMostFrequentlyUsed(array $params = [])
- * @method \Farmr\Results getNamespaces(array $params = [])
- * @method \Farmr\Results getNotInSet(array $params = [])
- * @method \Farmr\Results getPairs(array $params = [])
- * @method \Farmr\Results getPerms(array $params = [])
- * @method \Farmr\Results getPhotoDomains(array $params = [])
- * @method \Farmr\Results getPhotoReferrers(array $params = [])
- * @method \Farmr\Results getPhotoStats(array $params = [])
- * @method \Farmr\Results getPhotos(array $params = [])
- * @method \Farmr\Results getPhotosOf(array $params = [])
- * @method \Farmr\Results getPhotosetDomains(array $params = [])
- * @method \Farmr\Results getPhotosetReferrers(array $params = [])
- * @method \Farmr\Results getPhotosetStats(array $params = [])
- * @method \Farmr\Results getPhotostreamDomains(array $params = [])
- * @method \Farmr\Results getPhotostreamReferrers(array $params = [])
- * @method \Farmr\Results getPhotostreamStats(array $params = [])
- * @method \Farmr\Results getPlaceTypes(array $params = [])
- * @method \Farmr\Results getPopularPhotos(array $params = [])
- * @method \Farmr\Results getPredicates(array $params = [])
- * @method \Farmr\Results getPrivacy(array $params = [])
- * @method \Farmr\Results getPublicGroups(array $params = [])
- * @method \Farmr\Results getPublicList(array $params = [])
- * @method \Farmr\Results getPublicPhotos(array $params = [])
- * @method \Farmr\Results getRecent(array $params = [])
- * @method \Farmr\Results getRecentForContacts(array $params = [])
- * @method \Farmr\Results getRecentValues(array $params = [])
- * @method \Farmr\Results getRelated(array $params = [])
- * @method \Farmr\Results getSafetyLevel(array $params = [])
- * @method \Farmr\Results getServices(array $params = [])
- * @method \Farmr\Results getShapeHistory(array $params = [])
- * @method \Farmr\Results getSizes(array $params = [])
- * @method \Farmr\Results getSubscriptions(array $params = [])
- * @method \Farmr\Results getTaggingSuggestions(array $params = [])
- * @method \Farmr\Results getToken(array $params = [])
- * @method \Farmr\Results getTopPlacesList(array $params = [])
- * @method \Farmr\Results getTopics(array $params = [])
- * @method \Farmr\Results getTotalViews(array $params = [])
- * @method \Farmr\Results getTree(array $params = [])
- * @method \Farmr\Results getUntagged(array $params = [])
- * @method \Farmr\Results getUploadStatus(array $params = [])
- * @method \Farmr\Results getUserPhotos(array $params = [])
- * @method \Farmr\Results getUserProfile(array $params = [])
- * @method \Farmr\Results getValues(array $params = [])
- * @method \Farmr\Results getWithGeoData(array $params = [])
- * @method \Farmr\Results getWithoutGeoData(array $params = [])
- * @method \Farmr\Results join(array $params = [])
- * @method \Farmr\Results joinRequest(array $params = [])
- * @method \Farmr\Results leave(array $params = [])
- * @method \Farmr\Results login(array $params = [])
- * @method \Farmr\Results lookupGallery(array $params = [])
- * @method \Farmr\Results lookupGroup(array $params = [])
- * @method \Farmr\Results lookupUser(array $params = [])
- * @method \Farmr\Results null(array $params = [])
- * @method \Farmr\Results orderSets(array $params = [])
- * @method \Farmr\Results photosForLocation(array $params = [])
- * @method \Farmr\Results placesForBoundingBox(array $params = [])
- * @method \Farmr\Results placesForContacts(array $params = [])
- * @method \Farmr\Results placesForTags(array $params = [])
- * @method \Farmr\Results placesForUser(array $params = [])
- * @method \Farmr\Results postPhoto(array $params = [])
- * @method \Farmr\Results recentlyUpdated(array $params = [])
- * @method \Farmr\Results rejectSuggestion(array $params = [])
- * @method \Farmr\Results remove(array $params = [])
- * @method \Farmr\Results removeLocation(array $params = [])
- * @method \Farmr\Results removePhoto(array $params = [])
- * @method \Farmr\Results removePhotos(array $params = [])
- * @method \Farmr\Results removeSuggestion(array $params = [])
- * @method \Farmr\Results removeTag(array $params = [])
- * @method \Farmr\Results reorderPhotos(array $params = [])
- * @method \Farmr\Results resolvePlaceId(array $params = [])
- * @method \Farmr\Results resolvePlaceURL(array $params = [])
- * @method \Farmr\Results rotate(array $params = [])
- * @method \Farmr\Results search(array $params = [])
- * @method \Farmr\Results setContentType(array $params = [])
- * @method \Farmr\Results setContext(array $params = [])
- * @method \Farmr\Results setDates(array $params = [])
- * @method \Farmr\Results setLicense(array $params = [])
- * @method \Farmr\Results setLocation(array $params = [])
- * @method \Farmr\Results setMeta(array $params = [])
- * @method \Farmr\Results setPerms(array $params = [])
- * @method \Farmr\Results setPrimaryPhoto(array $params = [])
- * @method \Farmr\Results setSafetyLevel(array $params = [])
- * @method \Farmr\Results setTags(array $params = [])
- * @method \Farmr\Results subscribe(array $params = [])
- * @method \Farmr\Results suggestLocation(array $params = [])
- * @method \Farmr\Results tagsForPlace(array $params = [])
- * @method \Farmr\Results unsubscribe(array $params = [])
- * @method \Farmr\Results userComments(array $params = [])
- * @method \Farmr\Results userPhotos(array $params = [])
+ * @property-read \Fluentickr\Resource $activity
+ * @property-read \Fluentickr\Resource $auth
+ * @property-read \Fluentickr\Resource $blogs
+ * @property-read \Fluentickr\Resource $cameras
+ * @property-read \Fluentickr\Resource $collections
+ * @property-read \Fluentickr\Resource $comments
+ * @property-read \Fluentickr\Resource $commons
+ * @property-read \Fluentickr\Resource $contacts
+ * @property-read \Fluentickr\Resource $discuss
+ * @property-read \Fluentickr\Resource $favorites
+ * @property-read \Fluentickr\Resource $galleries
+ * @property-read \Fluentickr\Resource $geo
+ * @property-read \Fluentickr\Resource $groups
+ * @property-read \Fluentickr\Resource $interestingness
+ * @property-read \Fluentickr\Resource $licenses
+ * @property-read \Fluentickr\Resource $machinetags
+ * @property-read \Fluentickr\Resource $members
+ * @property-read \Fluentickr\Resource $notes
+ * @property-read \Fluentickr\Resource $oauth
+ * @property-read \Fluentickr\Resource $panda
+ * @property-read \Fluentickr\Resource $people
+ * @property-read \Fluentickr\Resource $photos
+ * @property-read \Fluentickr\Resource $photosets
+ * @property-read \Fluentickr\Resource $places
+ * @property-read \Fluentickr\Resource $pools
+ * @property-read \Fluentickr\Resource $prefs
+ * @property-read \Fluentickr\Resource $push
+ * @property-read \Fluentickr\Resource $reflection
+ * @property-read \Fluentickr\Resource $replies
+ * @property-read \Fluentickr\Resource $stats
+ * @property-read \Fluentickr\Resource $suggestions
+ * @property-read \Fluentickr\Resource $tags
+ * @property-read \Fluentickr\Resource $test
+ * @property-read \Fluentickr\Resource $topics
+ * @property-read \Fluentickr\Resource $transform
+ * @property-read \Fluentickr\Resource $upload
+ * @property-read \Fluentickr\Resource $urls
+ * @method \Fluentickr\Results add(array $params = [])
+ * @method \Fluentickr\Results addComment(array $params = [])
+ * @method \Fluentickr\Results addPhoto(array $params = [])
+ * @method \Fluentickr\Results addTags(array $params = [])
+ * @method \Fluentickr\Results approveSuggestion(array $params = [])
+ * @method \Fluentickr\Results batchCorrectLocation(array $params = [])
+ * @method \Fluentickr\Results browse(array $params = [])
+ * @method \Fluentickr\Results checkTickets(array $params = [])
+ * @method \Fluentickr\Results checkToken(array $params = [])
+ * @method \Fluentickr\Results correctLocation(array $params = [])
+ * @method \Fluentickr\Results create(array $params = [])
+ * @method \Fluentickr\Results delete(array $params = [])
+ * @method \Fluentickr\Results deleteComment(array $params = [])
+ * @method \Fluentickr\Results deleteCoords(array $params = [])
+ * @method \Fluentickr\Results echo (array $params = [])
+ * @method \Fluentickr\Results edit(array $params = [])
+ * @method \Fluentickr\Results editComment(array $params = [])
+ * @method \Fluentickr\Results editCoords(array $params = [])
+ * @method \Fluentickr\Results editMeta(array $params = [])
+ * @method \Fluentickr\Results editPhoto(array $params = [])
+ * @method \Fluentickr\Results editPhotos(array $params = [])
+ * @method \Fluentickr\Results find(array $params = [])
+ * @method \Fluentickr\Results findByEmail(array $params = [])
+ * @method \Fluentickr\Results findByLatLon(array $params = [])
+ * @method \Fluentickr\Results findByUsername(array $params = [])
+ * @method \Fluentickr\Results getAccessToken(array $params = [])
+ * @method \Fluentickr\Results getAllContexts(array $params = [])
+ * @method \Fluentickr\Results getBrandModels(array $params = [])
+ * @method \Fluentickr\Results getBrands(array $params = [])
+ * @method \Fluentickr\Results getCSVFiles(array $params = [])
+ * @method \Fluentickr\Results getChildrenWithPhotosPublic(array $params = [])
+ * @method \Fluentickr\Results getClusterPhotos(array $params = [])
+ * @method \Fluentickr\Results getClusters(array $params = [])
+ * @method \Fluentickr\Results getCollectionDomains(array $params = [])
+ * @method \Fluentickr\Results getCollectionReferrers(array $params = [])
+ * @method \Fluentickr\Results getCollectionStats(array $params = [])
+ * @method \Fluentickr\Results getContactsPhotos(array $params = [])
+ * @method \Fluentickr\Results getContactsPublicPhotos(array $params = [])
+ * @method \Fluentickr\Results getContentType(array $params = [])
+ * @method \Fluentickr\Results getContext(array $params = [])
+ * @method \Fluentickr\Results getCounts(array $params = [])
+ * @method \Fluentickr\Results getExif(array $params = [])
+ * @method \Fluentickr\Results getFavorites(array $params = [])
+ * @method \Fluentickr\Results getFrob(array $params = [])
+ * @method \Fluentickr\Results getFullToken(array $params = [])
+ * @method \Fluentickr\Results getGeoPerms(array $params = [])
+ * @method \Fluentickr\Results getGroup(array $params = [])
+ * @method \Fluentickr\Results getGroups(array $params = [])
+ * @method \Fluentickr\Results getHidden(array $params = [])
+ * @method \Fluentickr\Results getHotList(array $params = [])
+ * @method \Fluentickr\Results getInfo(array $params = [])
+ * @method \Fluentickr\Results getInfoByUrl(array $params = [])
+ * @method \Fluentickr\Results getInstitutions(array $params = [])
+ * @method \Fluentickr\Results getLimits(array $params = [])
+ * @method \Fluentickr\Results getList(array $params = [])
+ * @method \Fluentickr\Results getListForPhoto(array $params = [])
+ * @method \Fluentickr\Results getListPhoto(array $params = [])
+ * @method \Fluentickr\Results getListRecentlyUploaded(array $params = [])
+ * @method \Fluentickr\Results getListUser(array $params = [])
+ * @method \Fluentickr\Results getListUserPopular(array $params = [])
+ * @method \Fluentickr\Results getListUserRaw(array $params = [])
+ * @method \Fluentickr\Results getLocation(array $params = [])
+ * @method \Fluentickr\Results getMethodInfo(array $params = [])
+ * @method \Fluentickr\Results getMethods(array $params = [])
+ * @method \Fluentickr\Results getMostFrequentlyUsed(array $params = [])
+ * @method \Fluentickr\Results getNamespaces(array $params = [])
+ * @method \Fluentickr\Results getNotInSet(array $params = [])
+ * @method \Fluentickr\Results getPairs(array $params = [])
+ * @method \Fluentickr\Results getPerms(array $params = [])
+ * @method \Fluentickr\Results getPhotoDomains(array $params = [])
+ * @method \Fluentickr\Results getPhotoReferrers(array $params = [])
+ * @method \Fluentickr\Results getPhotoStats(array $params = [])
+ * @method \Fluentickr\Results getPhotos(array $params = [])
+ * @method \Fluentickr\Results getPhotosOf(array $params = [])
+ * @method \Fluentickr\Results getPhotosetDomains(array $params = [])
+ * @method \Fluentickr\Results getPhotosetReferrers(array $params = [])
+ * @method \Fluentickr\Results getPhotosetStats(array $params = [])
+ * @method \Fluentickr\Results getPhotostreamDomains(array $params = [])
+ * @method \Fluentickr\Results getPhotostreamReferrers(array $params = [])
+ * @method \Fluentickr\Results getPhotostreamStats(array $params = [])
+ * @method \Fluentickr\Results getPlaceTypes(array $params = [])
+ * @method \Fluentickr\Results getPopularPhotos(array $params = [])
+ * @method \Fluentickr\Results getPredicates(array $params = [])
+ * @method \Fluentickr\Results getPrivacy(array $params = [])
+ * @method \Fluentickr\Results getPublicGroups(array $params = [])
+ * @method \Fluentickr\Results getPublicList(array $params = [])
+ * @method \Fluentickr\Results getPublicPhotos(array $params = [])
+ * @method \Fluentickr\Results getRecent(array $params = [])
+ * @method \Fluentickr\Results getRecentForContacts(array $params = [])
+ * @method \Fluentickr\Results getRecentValues(array $params = [])
+ * @method \Fluentickr\Results getRelated(array $params = [])
+ * @method \Fluentickr\Results getSafetyLevel(array $params = [])
+ * @method \Fluentickr\Results getServices(array $params = [])
+ * @method \Fluentickr\Results getShapeHistory(array $params = [])
+ * @method \Fluentickr\Results getSizes(array $params = [])
+ * @method \Fluentickr\Results getSubscriptions(array $params = [])
+ * @method \Fluentickr\Results getTaggingSuggestions(array $params = [])
+ * @method \Fluentickr\Results getToken(array $params = [])
+ * @method \Fluentickr\Results getTopPlacesList(array $params = [])
+ * @method \Fluentickr\Results getTopics(array $params = [])
+ * @method \Fluentickr\Results getTotalViews(array $params = [])
+ * @method \Fluentickr\Results getTree(array $params = [])
+ * @method \Fluentickr\Results getUntagged(array $params = [])
+ * @method \Fluentickr\Results getUploadStatus(array $params = [])
+ * @method \Fluentickr\Results getUserPhotos(array $params = [])
+ * @method \Fluentickr\Results getUserProfile(array $params = [])
+ * @method \Fluentickr\Results getValues(array $params = [])
+ * @method \Fluentickr\Results getWithGeoData(array $params = [])
+ * @method \Fluentickr\Results getWithoutGeoData(array $params = [])
+ * @method \Fluentickr\Results join(array $params = [])
+ * @method \Fluentickr\Results joinRequest(array $params = [])
+ * @method \Fluentickr\Results leave(array $params = [])
+ * @method \Fluentickr\Results login(array $params = [])
+ * @method \Fluentickr\Results lookupGallery(array $params = [])
+ * @method \Fluentickr\Results lookupGroup(array $params = [])
+ * @method \Fluentickr\Results lookupUser(array $params = [])
+ * @method \Fluentickr\Results null(array $params = [])
+ * @method \Fluentickr\Results orderSets(array $params = [])
+ * @method \Fluentickr\Results photosForLocation(array $params = [])
+ * @method \Fluentickr\Results placesForBoundingBox(array $params = [])
+ * @method \Fluentickr\Results placesForContacts(array $params = [])
+ * @method \Fluentickr\Results placesForTags(array $params = [])
+ * @method \Fluentickr\Results placesForUser(array $params = [])
+ * @method \Fluentickr\Results postPhoto(array $params = [])
+ * @method \Fluentickr\Results recentlyUpdated(array $params = [])
+ * @method \Fluentickr\Results rejectSuggestion(array $params = [])
+ * @method \Fluentickr\Results remove(array $params = [])
+ * @method \Fluentickr\Results removeLocation(array $params = [])
+ * @method \Fluentickr\Results removePhoto(array $params = [])
+ * @method \Fluentickr\Results removePhotos(array $params = [])
+ * @method \Fluentickr\Results removeSuggestion(array $params = [])
+ * @method \Fluentickr\Results removeTag(array $params = [])
+ * @method \Fluentickr\Results reorderPhotos(array $params = [])
+ * @method \Fluentickr\Results resolvePlaceId(array $params = [])
+ * @method \Fluentickr\Results resolvePlaceURL(array $params = [])
+ * @method \Fluentickr\Results rotate(array $params = [])
+ * @method \Fluentickr\Results search(array $params = [])
+ * @method \Fluentickr\Results setContentType(array $params = [])
+ * @method \Fluentickr\Results setContext(array $params = [])
+ * @method \Fluentickr\Results setDates(array $params = [])
+ * @method \Fluentickr\Results setLicense(array $params = [])
+ * @method \Fluentickr\Results setLocation(array $params = [])
+ * @method \Fluentickr\Results setMeta(array $params = [])
+ * @method \Fluentickr\Results setPerms(array $params = [])
+ * @method \Fluentickr\Results setPrimaryPhoto(array $params = [])
+ * @method \Fluentickr\Results setSafetyLevel(array $params = [])
+ * @method \Fluentickr\Results setTags(array $params = [])
+ * @method \Fluentickr\Results subscribe(array $params = [])
+ * @method \Fluentickr\Results suggestLocation(array $params = [])
+ * @method \Fluentickr\Results tagsForPlace(array $params = [])
+ * @method \Fluentickr\Results unsubscribe(array $params = [])
+ * @method \Fluentickr\Results userComments(array $params = [])
+ * @method \Fluentickr\Results userPhotos(array $params = [])
  */
 class Resource
 {
 
     /**
-     * @var \Farmr\Farmr
+     * @var \Fluentickr\Fluentickr
      */
     protected $flickr;
 
@@ -257,11 +257,11 @@ class Resource
     ];
 
     /**
-     * @param \Farmr\Farmr $flickr
+     * @param \Fluentickr\Fluentickr $flickr
      * @param string $parentResource
      * @param string $resource
      */
-    public function __construct(Farmr $flickr, $parentResource, $resource)
+    public function __construct(Fluentickr $flickr, $parentResource, $resource)
     {
         $this->flickr = $flickr;
         $this->method = "$parentResource.$resource";
@@ -269,7 +269,7 @@ class Resource
 
     /**
      * @param $childResource
-     * @return \Farmr\Resource
+     * @return \Fluentickr\Resource
      */
     public function __get($childResource)
     {
@@ -279,7 +279,7 @@ class Resource
     /**
      * @param $childResource
      * @param $args
-     * @return \Farmr\Results
+     * @return \Fluentickr\Results
      */
     public function __call($childResource, $args)
     {
@@ -288,7 +288,7 @@ class Resource
 
     /**
      * @param array $parameters
-     * @return \Farmr\Results
+     * @return \Fluentickr\Results
      */
     public function __invoke(array $parameters = [])
     {

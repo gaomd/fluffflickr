@@ -1,15 +1,15 @@
 <?php
 
-namespace Farmr;
+namespace Fluentickr;
 
-use Farmr\Exception\FlickrErrorException;
+use Fluentickr\Exception\FlickrErrorException;
 use Psr\Http\Message\ResponseInterface;
 
 class Results implements \ArrayAccess
 {
 
     /**
-     * @var \Farmr\Resource
+     * @var \Fluentickr\Resource
      */
     protected $resource;
 
@@ -24,7 +24,7 @@ class Results implements \ArrayAccess
     protected $container = [];
 
     /**
-     * @param \Farmr\Resource $resource
+     * @param \Fluentickr\Resource $resource
      * @param \Psr\Http\Message\ResponseInterface $response
      */
     public function __construct(Resource $resource, ResponseInterface $response)
