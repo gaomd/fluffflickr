@@ -93,4 +93,11 @@ class Results implements \ArrayAccess
     {
         throw new \Exception('Results are read only.');
     }
+
+    public function toArray()
+    {
+        return is_array($this->container)
+            ? $this->container
+            : [];
+    }
 }
