@@ -2,42 +2,35 @@
 
 namespace Fluentickr;
 
+use Fluentickr\Traits\IntermediateMethodHintTrait;
+
 class Fluentickr
 {
 
-    use GetResourceTrait;
+    use IntermediateMethodHintTrait;
 
     /**
-     * @var string
+     * @var \Fluentickr\Method
      */
-    protected $endpoint = 'https://api.flickr.com/services/rest';
+    protected $rootMethod;
 
-    /**
-     * @param $childResource
-     * @return \Fluentickr\Resource
-     */
-    public function __get($childResource)
+    public function __construct(Method $rootMethod)
     {
-        return $this->getResource($this, "flickr.{$childResource}");
+        $this->rootMethod = $rootMethod;
+    }
+
+    public static function getInstance()
+    {
+        return new static(new Method('flickr', new MethodCaller()));
     }
 
     /**
-     * @return string
+     * @param $name
+     * @return \Fluentickr\Method
      */
-    public function getEndpoint()
+    public function __get($name)
     {
-        return $this->endpoint;
+        return $this->rootMethod->child($name);
     }
 
-    /**
-     * @return array
-     */
-    public function getOverrideParams()
-    {
-        return [
-            'api_key'        => getenv('FLICKR_API_KEY'),
-            'format'         => 'json',
-            'nojsoncallback' => 1,
-        ];
-    }
 }

@@ -2,16 +2,14 @@
 
 require(dirname(dirname(__FILE__)) . '/vendor/autoload.php');
 
-$flickr = new \Fluentickr\Fluentickr();
-
 $dotEnv = new Dotenv\Dotenv(dirname(dirname(__FILE__)));
 $dotEnv->load();
 $dotEnv->required('FLICKR_API_KEY');
 
-/** @var \Fluentickr\Results $results */
+$flickr = Fluentickr\Fluentickr::getInstance();
 $results = $flickr->test->echo(['foo' => 'bar']);
 
-if ($results->isOk() && isset($results['foo']['_content']) && $results['foo']['_content'] === 'bar') {
+if ($results->ok() && isset($results['foo']['_content']) && $results['foo']['_content'] === 'bar') {
     echo "=======\nPasses!\n=======\n";
 }
 

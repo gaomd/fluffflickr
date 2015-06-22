@@ -2,281 +2,109 @@
 
 namespace Fluentickr;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\Request;
+use Fluentickr\Exception\FlickrErrorException;
+use Psr\Http\Message\ResponseInterface;
 
-/**
- * @method \Fluentickr\Results add(array $params = [])
- * @method \Fluentickr\Results addComment(array $params = [])
- * @method \Fluentickr\Results addPhoto(array $params = [])
- * @method \Fluentickr\Results addTags(array $params = [])
- * @method \Fluentickr\Results approveSuggestion(array $params = [])
- * @method \Fluentickr\Results batchCorrectLocation(array $params = [])
- * @method \Fluentickr\Results browse(array $params = [])
- * @method \Fluentickr\Results checkTickets(array $params = [])
- * @method \Fluentickr\Results checkToken(array $params = [])
- * @method \Fluentickr\Results correctLocation(array $params = [])
- * @method \Fluentickr\Results create(array $params = [])
- * @method \Fluentickr\Results delete(array $params = [])
- * @method \Fluentickr\Results deleteComment(array $params = [])
- * @method \Fluentickr\Results deleteCoords(array $params = [])
- * @method \Fluentickr\Results echo (array $params = [])
- * @method \Fluentickr\Results edit(array $params = [])
- * @method \Fluentickr\Results editComment(array $params = [])
- * @method \Fluentickr\Results editCoords(array $params = [])
- * @method \Fluentickr\Results editMeta(array $params = [])
- * @method \Fluentickr\Results editPhoto(array $params = [])
- * @method \Fluentickr\Results editPhotos(array $params = [])
- * @method \Fluentickr\Results find(array $params = [])
- * @method \Fluentickr\Results findByEmail(array $params = [])
- * @method \Fluentickr\Results findByLatLon(array $params = [])
- * @method \Fluentickr\Results findByUsername(array $params = [])
- * @method \Fluentickr\Results getAccessToken(array $params = [])
- * @method \Fluentickr\Results getAllContexts(array $params = [])
- * @method \Fluentickr\Results getBrandModels(array $params = [])
- * @method \Fluentickr\Results getBrands(array $params = [])
- * @method \Fluentickr\Results getCSVFiles(array $params = [])
- * @method \Fluentickr\Results getChildrenWithPhotosPublic(array $params = [])
- * @method \Fluentickr\Results getClusterPhotos(array $params = [])
- * @method \Fluentickr\Results getClusters(array $params = [])
- * @method \Fluentickr\Results getCollectionDomains(array $params = [])
- * @method \Fluentickr\Results getCollectionReferrers(array $params = [])
- * @method \Fluentickr\Results getCollectionStats(array $params = [])
- * @method \Fluentickr\Results getContactsPhotos(array $params = [])
- * @method \Fluentickr\Results getContactsPublicPhotos(array $params = [])
- * @method \Fluentickr\Results getContentType(array $params = [])
- * @method \Fluentickr\Results getContext(array $params = [])
- * @method \Fluentickr\Results getCounts(array $params = [])
- * @method \Fluentickr\Results getExif(array $params = [])
- * @method \Fluentickr\Results getFavorites(array $params = [])
- * @method \Fluentickr\Results getFrob(array $params = [])
- * @method \Fluentickr\Results getFullToken(array $params = [])
- * @method \Fluentickr\Results getGeoPerms(array $params = [])
- * @method \Fluentickr\Results getGroup(array $params = [])
- * @method \Fluentickr\Results getGroups(array $params = [])
- * @method \Fluentickr\Results getHidden(array $params = [])
- * @method \Fluentickr\Results getHotList(array $params = [])
- * @method \Fluentickr\Results getInfo(array $params = [])
- * @method \Fluentickr\Results getInfoByUrl(array $params = [])
- * @method \Fluentickr\Results getInstitutions(array $params = [])
- * @method \Fluentickr\Results getLimits(array $params = [])
- * @method \Fluentickr\Results getList(array $params = [])
- * @method \Fluentickr\Results getListForPhoto(array $params = [])
- * @method \Fluentickr\Results getListPhoto(array $params = [])
- * @method \Fluentickr\Results getListRecentlyUploaded(array $params = [])
- * @method \Fluentickr\Results getListUser(array $params = [])
- * @method \Fluentickr\Results getListUserPopular(array $params = [])
- * @method \Fluentickr\Results getListUserRaw(array $params = [])
- * @method \Fluentickr\Results getLocation(array $params = [])
- * @method \Fluentickr\Results getMethodInfo(array $params = [])
- * @method \Fluentickr\Results getMethods(array $params = [])
- * @method \Fluentickr\Results getMostFrequentlyUsed(array $params = [])
- * @method \Fluentickr\Results getNamespaces(array $params = [])
- * @method \Fluentickr\Results getNotInSet(array $params = [])
- * @method \Fluentickr\Results getPairs(array $params = [])
- * @method \Fluentickr\Results getPerms(array $params = [])
- * @method \Fluentickr\Results getPhotoDomains(array $params = [])
- * @method \Fluentickr\Results getPhotoReferrers(array $params = [])
- * @method \Fluentickr\Results getPhotoStats(array $params = [])
- * @method \Fluentickr\Results getPhotos(array $params = [])
- * @method \Fluentickr\Results getPhotosOf(array $params = [])
- * @method \Fluentickr\Results getPhotosetDomains(array $params = [])
- * @method \Fluentickr\Results getPhotosetReferrers(array $params = [])
- * @method \Fluentickr\Results getPhotosetStats(array $params = [])
- * @method \Fluentickr\Results getPhotostreamDomains(array $params = [])
- * @method \Fluentickr\Results getPhotostreamReferrers(array $params = [])
- * @method \Fluentickr\Results getPhotostreamStats(array $params = [])
- * @method \Fluentickr\Results getPlaceTypes(array $params = [])
- * @method \Fluentickr\Results getPopularPhotos(array $params = [])
- * @method \Fluentickr\Results getPredicates(array $params = [])
- * @method \Fluentickr\Results getPrivacy(array $params = [])
- * @method \Fluentickr\Results getPublicGroups(array $params = [])
- * @method \Fluentickr\Results getPublicList(array $params = [])
- * @method \Fluentickr\Results getPublicPhotos(array $params = [])
- * @method \Fluentickr\Results getRecent(array $params = [])
- * @method \Fluentickr\Results getRecentForContacts(array $params = [])
- * @method \Fluentickr\Results getRecentValues(array $params = [])
- * @method \Fluentickr\Results getRelated(array $params = [])
- * @method \Fluentickr\Results getSafetyLevel(array $params = [])
- * @method \Fluentickr\Results getServices(array $params = [])
- * @method \Fluentickr\Results getShapeHistory(array $params = [])
- * @method \Fluentickr\Results getSizes(array $params = [])
- * @method \Fluentickr\Results getSubscriptions(array $params = [])
- * @method \Fluentickr\Results getTaggingSuggestions(array $params = [])
- * @method \Fluentickr\Results getToken(array $params = [])
- * @method \Fluentickr\Results getTopPlacesList(array $params = [])
- * @method \Fluentickr\Results getTopics(array $params = [])
- * @method \Fluentickr\Results getTotalViews(array $params = [])
- * @method \Fluentickr\Results getTree(array $params = [])
- * @method \Fluentickr\Results getUntagged(array $params = [])
- * @method \Fluentickr\Results getUploadStatus(array $params = [])
- * @method \Fluentickr\Results getUserPhotos(array $params = [])
- * @method \Fluentickr\Results getUserProfile(array $params = [])
- * @method \Fluentickr\Results getValues(array $params = [])
- * @method \Fluentickr\Results getWithGeoData(array $params = [])
- * @method \Fluentickr\Results getWithoutGeoData(array $params = [])
- * @method \Fluentickr\Results join(array $params = [])
- * @method \Fluentickr\Results joinRequest(array $params = [])
- * @method \Fluentickr\Results leave(array $params = [])
- * @method \Fluentickr\Results login(array $params = [])
- * @method \Fluentickr\Results lookupGallery(array $params = [])
- * @method \Fluentickr\Results lookupGroup(array $params = [])
- * @method \Fluentickr\Results lookupUser(array $params = [])
- * @method \Fluentickr\Results null(array $params = [])
- * @method \Fluentickr\Results orderSets(array $params = [])
- * @method \Fluentickr\Results photosForLocation(array $params = [])
- * @method \Fluentickr\Results placesForBoundingBox(array $params = [])
- * @method \Fluentickr\Results placesForContacts(array $params = [])
- * @method \Fluentickr\Results placesForTags(array $params = [])
- * @method \Fluentickr\Results placesForUser(array $params = [])
- * @method \Fluentickr\Results postPhoto(array $params = [])
- * @method \Fluentickr\Results recentlyUpdated(array $params = [])
- * @method \Fluentickr\Results rejectSuggestion(array $params = [])
- * @method \Fluentickr\Results remove(array $params = [])
- * @method \Fluentickr\Results removeLocation(array $params = [])
- * @method \Fluentickr\Results removePhoto(array $params = [])
- * @method \Fluentickr\Results removePhotos(array $params = [])
- * @method \Fluentickr\Results removeSuggestion(array $params = [])
- * @method \Fluentickr\Results removeTag(array $params = [])
- * @method \Fluentickr\Results reorderPhotos(array $params = [])
- * @method \Fluentickr\Results resolvePlaceId(array $params = [])
- * @method \Fluentickr\Results resolvePlaceURL(array $params = [])
- * @method \Fluentickr\Results rotate(array $params = [])
- * @method \Fluentickr\Results search(array $params = [])
- * @method \Fluentickr\Results setContentType(array $params = [])
- * @method \Fluentickr\Results setContext(array $params = [])
- * @method \Fluentickr\Results setDates(array $params = [])
- * @method \Fluentickr\Results setLicense(array $params = [])
- * @method \Fluentickr\Results setLocation(array $params = [])
- * @method \Fluentickr\Results setMeta(array $params = [])
- * @method \Fluentickr\Results setPerms(array $params = [])
- * @method \Fluentickr\Results setPrimaryPhoto(array $params = [])
- * @method \Fluentickr\Results setSafetyLevel(array $params = [])
- * @method \Fluentickr\Results setTags(array $params = [])
- * @method \Fluentickr\Results subscribe(array $params = [])
- * @method \Fluentickr\Results suggestLocation(array $params = [])
- * @method \Fluentickr\Results tagsForPlace(array $params = [])
- * @method \Fluentickr\Results unsubscribe(array $params = [])
- * @method \Fluentickr\Results userComments(array $params = [])
- * @method \Fluentickr\Results userPhotos(array $params = [])
- */
-class Resource
+class Resource implements \ArrayAccess
 {
 
-    use GetResourceTrait;
+    /**
+     * @var \Psr\Http\Message\ResponseInterface
+     */
+    protected $response;
 
     /**
-     * @var \Fluentickr\Fluentickr
+     * @var \Fluentickr\Method
      */
-    protected $flickr;
-
-    /**
-     * @var string
-     */
-    protected $resource;
+    protected $method;
 
     /**
      * @var array
      */
-    protected $postMethods = [
-        'postPhoto',
-        'add',
-        'remove',
-        'create',
-        'editMeta',
-        'editPhoto',
-        'editPhotos',
-        'join',
-        'joinRequest',
-        'leave',
-        'delete',
-        'edit',
-        'removeTag',
-        'setContentType',
-        'setDates',
-        'setMeta',
-        'setPerms',
-        'setSafetyLevel',
-        'setTags',
-        'deleteComment',
-        'editComment',
-        'batchCorrectLocation',
-        'correctLocation',
-        'removeLocation',
-        'setLicense',
-        'deleteCoords',
-        'editCoords',
-        'approveSuggestion',
-        'rejectSuggestion',
-        'removeSuggestion',
-        'suggestLocation',
-        'rotate',
-        'orderSets',
-        'removePhoto',
-        'removePhotos',
-        'reorderPhotos',
-        'setPrimaryPhoto',
-        'addComment',
-        // Should be POST: 'subscribe',
-        // Should be POST: 'unsubscribe',
-    ];
+    protected $arguments;
 
     /**
-     * @param \Fluentickr\Fluentickr $flickr
-     * @param string $resource
+     * @var array
      */
-    public function __construct(Fluentickr $flickr, $resource)
+    protected $container = [];
+
+    /**
+     * @param \Fluentickr\Method $method
+     * @param array $arguments
+     * @param \Psr\Http\Message\ResponseInterface $response
+     */
+    public function __construct(ResponseInterface $response, Method $method, array $arguments)
     {
-        $this->flickr = $flickr;
-        $this->resource = (string) $resource;
+        $this->response = $response;
+        $this->method = $method;
+        $this->arguments = $arguments;
+
+        $this->decodeResponse();
+    }
+
+    protected function decodeResponse()
+    {
+        if ($this->response->getStatusCode() !== 200) {
+            throw new \RuntimeException('Failed to call Flickr API.');
+        }
+
+        $data = json_decode($this->response->getBody(), true);
+
+        if (!is_array($data) || !isset($data['stat'])) {
+            throw new \RuntimeException('Unable to parse Flickr API response.');
+        }
+
+        if ($data['stat'] === 'fail') {
+            throw new FlickrErrorException($data['message'], $data['code']);
+        }
+
+        $this->container = $data;
     }
 
     /**
-     * @param $childResource
-     * @return \Fluentickr\Resource
+     * @return bool
      */
-    public function __get($childResource)
+    public function ok()
     {
-        return $this->getResource($this->flickr, "{$this->resource}.{$childResource}");
+        return (isset($this->container['stat']) && $this->container['stat'] === 'ok');
     }
 
     /**
-     * @param $childResource
-     * @param $args
-     * @return \Fluentickr\Results
+     * {@inheritdoc}
      */
-    public function __call($childResource, $args)
+    public function offsetExists($offset)
     {
-        return call_user_func_array($this->{$childResource}, $args);
+        return isset($this->container[$offset]);
     }
 
     /**
-     * @param array $parameters
-     * @return \Fluentickr\Results
+     * {@inheritdoc}
      */
-    public function __invoke(array $parameters = [])
+    public function offsetGet($offset)
     {
-        $parameters = array_merge(
-            $parameters,
-            ['method' => $this->resource],
-            $this->flickr->getOverrideParams()
-        );
-
-        $client = new Client();
-        $url = $this->flickr->getEndpoint() . '?' . \GuzzleHttp\Psr7\build_query($parameters);
-        $request = new Request($this->determineHttpMethod(), $url);
-        $response = $client->send($request);
-
-        return new Results($this, $response);
+        return $this->container[$offset];
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
-    protected function determineHttpMethod()
+    public function offsetSet($offset, $value)
     {
-        $resourceSegment = preg_replace('/\.([a-zA-Z])$/', '$1', $this->resource);
+        throw new \Exception('Results are read only.');
+    }
 
-        return in_array($resourceSegment, $this->postMethods, true) ? 'POST' : 'GET';
+    /**
+     * {@inheritdoc}
+     */
+    public function offsetUnset($offset)
+    {
+        throw new \Exception('Results are read only.');
+    }
+
+    public function toArray()
+    {
+        return is_array($this->container)
+            ? $this->container
+            : [];
     }
 }
