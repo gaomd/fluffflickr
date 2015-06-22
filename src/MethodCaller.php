@@ -59,7 +59,7 @@ class MethodCaller
         // Should be POST: 'unsubscribe',
     ];
 
-    public function invoke(Method $method, array $arguments = [])
+    public function call(Method $method, array $arguments = [])
     {
 
         $httpMethod = $this->determineHttpMethod($method);

@@ -121,7 +121,7 @@ class Method
      */
     public function __invoke(array $arguments = [])
     {
-        return $this->caller->invoke($this, $arguments);
+        return $this->caller->call($this, $arguments);
     }
 
 }
