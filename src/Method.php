@@ -19,7 +19,7 @@ class Method
     protected $name;
 
     /**
-     * @var \Fluentickr\Fluentickr
+     * @var \Fluentickr\MethodCaller
      */
     protected $caller;
 
