@@ -1,8 +1,45 @@
 <?php
 
-namespace Fluentickr\Traits;
+namespace Fluentickr;
 
 /**
+ * @method $this activity()
+ * @method $this auth()
+ * @method $this blogs()
+ * @method $this cameras()
+ * @method $this collections()
+ * @method $this comments()
+ * @method $this commons()
+ * @method $this contacts()
+ * @method $this discuss()
+ * @method $this favorites()
+ * @method $this galleries()
+ * @method $this geo()
+ * @method $this groups()
+ * @method $this interestingness()
+ * @method $this licenses()
+ * @method $this machinetags()
+ * @method $this members()
+ * @method $this notes()
+ * @method $this oauth()
+ * @method $this panda()
+ * @method $this people()
+ * @method $this photos()
+ * @method $this photosets()
+ * @method $this places()
+ * @method $this pools()
+ * @method $this prefs()
+ * @method $this push()
+ * @method $this reflection()
+ * @method $this replies()
+ * @method $this stats()
+ * @method $this suggestions()
+ * @method $this tags()
+ * @method $this test()
+ * @method $this topics()
+ * @method $this transform()
+ * @method $this upload()
+ * @method $this urls()
  * @method \Fluentickr\Resource add(array $arguments = [])
  * @method \Fluentickr\Resource addComment(array $arguments = [])
  * @method \Fluentickr\Resource addPhoto(array $arguments = [])
@@ -157,7 +194,210 @@ namespace Fluentickr\Traits;
  * @method \Fluentickr\Resource userComments(array $arguments = [])
  * @method \Fluentickr\Resource userPhotos(array $arguments = [])
  */
-trait CallableMethodHintTrait
+class Fluent
 {
+
+    /**
+     * @var array
+     */
+    protected $methodSegments = [];
+
+    /**
+     * @var \Fluentickr\MethodCaller
+     */
+    protected $methodCaller;
+
+    /**
+     * @var array
+     */
+    protected $closingMethods = [
+        'add',
+        'addComment',
+        'addPhoto',
+        'addTags',
+        'approveSuggestion',
+        'batchCorrectLocation',
+        'browse',
+        'checkTickets',
+        'checkToken',
+        'correctLocation',
+        'create',
+        'delete',
+        'deleteComment',
+        'deleteCoords',
+        'echo',
+        'edit',
+        'editComment',
+        'editCoords',
+        'editMeta',
+        'editPhoto',
+        'editPhotos',
+        'find',
+        'findByEmail',
+        'findByLatLon',
+        'findByUsername',
+        'getAccessToken',
+        'getAllContexts',
+        'getBrandModels',
+        'getBrands',
+        'getCSVFiles',
+        'getChildrenWithPhotosPublic',
+        'getClusterPhotos',
+        'getClusters',
+        'getCollectionDomains',
+        'getCollectionReferrers',
+        'getCollectionStats',
+        'getContactsPhotos',
+        'getContactsPublicPhotos',
+        'getContentType',
+        'getContext',
+        'getCounts',
+        'getExif',
+        'getFavorites',
+        'getFrob',
+        'getFullToken',
+        'getGeoPerms',
+        'getGroup',
+        'getGroups',
+        'getHidden',
+        'getHotList',
+        'getInfo',
+        'getInfoByUrl',
+        'getInstitutions',
+        'getLimits',
+        'getList',
+        'getListForPhoto',
+        'getListPhoto',
+        'getListRecentlyUploaded',
+        'getListUser',
+        'getListUserPopular',
+        'getListUserRaw',
+        'getLocation',
+        'getMethodInfo',
+        'getMethods',
+        'getMostFrequentlyUsed',
+        'getNamespaces',
+        'getNotInSet',
+        'getPairs',
+        'getPerms',
+        'getPhotoDomains',
+        'getPhotoReferrers',
+        'getPhotoStats',
+        'getPhotos',
+        'getPhotosOf',
+        'getPhotosetDomains',
+        'getPhotosetReferrers',
+        'getPhotosetStats',
+        'getPhotostreamDomains',
+        'getPhotostreamReferrers',
+        'getPhotostreamStats',
+        'getPlaceTypes',
+        'getPopularPhotos',
+        'getPredicates',
+        'getPrivacy',
+        'getPublicGroups',
+        'getPublicList',
+        'getPublicPhotos',
+        'getRecent',
+        'getRecentForContacts',
+        'getRecentValues',
+        'getRelated',
+        'getSafetyLevel',
+        'getServices',
+        'getShapeHistory',
+        'getSizes',
+        'getSubscriptions',
+        'getTaggingSuggestions',
+        'getToken',
+        'getTopPlacesList',
+        'getTopics',
+        'getTotalViews',
+        'getTree',
+        'getUntagged',
+        'getUploadStatus',
+        'getUserPhotos',
+        'getUserProfile',
+        'getValues',
+        'getWithGeoData',
+        'getWithoutGeoData',
+        'join',
+        'joinRequest',
+        'leave',
+        'login',
+        'lookupGallery',
+        'lookupGroup',
+        'lookupUser',
+        'null',
+        'orderSets',
+        'photosForLocation',
+        'placesForBoundingBox',
+        'placesForContacts',
+        'placesForTags',
+        'placesForUser',
+        'postPhoto',
+        'recentlyUpdated',
+        'rejectSuggestion',
+        'remove',
+        'removeLocation',
+        'removePhoto',
+        'removePhotos',
+        'removeSuggestion',
+        'removeTag',
+        'reorderPhotos',
+        'resolvePlaceId',
+        'resolvePlaceURL',
+        'rotate',
+        'search',
+        'setContentType',
+        'setContext',
+        'setDates',
+        'setLicense',
+        'setLocation',
+        'setMeta',
+        'setPerms',
+        'setPrimaryPhoto',
+        'setSafetyLevel',
+        'setTags',
+        'subscribe',
+        'suggestLocation',
+        'tagsForPlace',
+        'unsubscribe',
+        'userComments',
+        'userPhotos',
+    ];
+
+    /**
+     * @param \Fluentickr\MethodCaller $methodCaller
+     */
+    public function __construct(MethodCaller $methodCaller)
+    {
+        $this->methodSegments = ['flickr'];
+        $this->methodCaller = $methodCaller;
+    }
+
+    /**
+     * @param $method
+     * @param $arguments
+     * @return $this|\Fluentickr\Resource
+     */
+    public function __call($method, array $arguments)
+    {
+        $this->methodSegments[] = $method;
+
+        if ($this->isClosingMethod($method)) {
+            $methodArguments = count($arguments) > 1 ? $arguments[0] : [];
+            $method = new Method($this->methodCaller, implode('.', $this->methodSegments));
+            $this->methodSegments = ['flickr'];
+
+            return $method->call($methodArguments);
+        }
+
+        return $this;
+    }
+
+    protected function isClosingMethod($name)
+    {
+        return in_array($name, $this->closingMethods, true);
+    }
 
 }

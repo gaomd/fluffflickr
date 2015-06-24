@@ -2,7 +2,6 @@
 
 namespace Fluentickr;
 
-use Fluentickr\Exception\FlickrErrorException;
 use Psr\Http\Message\ResponseInterface;
 
 class Resource implements \ArrayAccess
@@ -42,6 +41,9 @@ class Resource implements \ArrayAccess
         $this->decodeResponse();
     }
 
+    /**
+     * Decode response from the Flickr API.
+     */
     protected function decodeResponse()
     {
         if ($this->response->getStatusCode() !== 200) {
@@ -101,6 +103,9 @@ class Resource implements \ArrayAccess
         throw new \Exception('Results are read only.');
     }
 
+    /**
+     * @return array
+     */
     public function toArray()
     {
         return is_array($this->container)

@@ -11,7 +11,7 @@ class MethodCaller
     /**
      * @var string
      */
-    protected $baseUrl = 'https://api.flickr.com/services/rest';
+    protected $baseUrl = 'https://api.flickr.com/services/rest/';
 
     /**
      * @var array
@@ -59,13 +59,17 @@ class MethodCaller
         // Should be POST: 'unsubscribe',
     ];
 
+    /**
+     * @param \Fluentickr\Method $method
+     * @param array $arguments
+     * @return \Fluentickr\Resource
+     */
     public function call(Method $method, array $arguments = [])
     {
-
         $httpMethod = $this->determineHttpMethod($method);
         $queryParams = array_merge(
             $arguments,
-            ['method' => $method->fullMethodChain()],
+            ['method' => $method->name()],
             $this->getOverrideArguments()
         );
         $url = $this->baseUrl . '?' . \GuzzleHttp\Psr7\build_query($queryParams);
@@ -96,7 +100,7 @@ class MethodCaller
      */
     protected function determineHttpMethod(Method $method)
     {
-        return in_array($method->name(), $this->methodsRequireHttpPost, true) ? 'POST' : 'GET';
+        return in_array($method->lastSegment(), $this->methodsRequireHttpPost, true) ? 'POST' : 'GET';
     }
 
 }
