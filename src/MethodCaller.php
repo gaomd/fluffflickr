@@ -2,8 +2,6 @@
 
 namespace Fluentickr;
 
-use Psr\Http\Message\ResponseInterface;
-
 class MethodCaller
 {
 

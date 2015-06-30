@@ -21,21 +21,24 @@ class MethodTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException(InvalidArgumentException::class, 'Invalid method name.');
 
-        $method = new Method('flickr/foo/bar');
+        // Should throws exception
+        new Method('flickr/foo/bar');
     }
 
     public function testInvalidName2()
     {
         $this->setExpectedException(InvalidArgumentException::class, 'Invalid method name.');
 
-        $method = new Method('flickr.foo.bar.');
+        // Should throws exception
+        new Method('flickr.foo.bar.');
     }
 
     public function testInvalidName3()
     {
         $this->setExpectedException(InvalidArgumentException::class, 'Invalid method name.');
 
-        $method = new Method('.flickr.foo.bar.');
+        // Should throws exception
+        new Method('.flickr.foo.bar.');
     }
 
     public function testGetLastSegment()

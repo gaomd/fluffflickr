@@ -69,7 +69,7 @@ class ResourceTest extends \PHPUnit_Framework_TestCase
         $response->shouldReceive('getBody')
             ->andReturn(json_encode($this->error));
 
-        // Should throw exception
+        // Should throws exception
         new Resource($response);
     }
 
@@ -85,7 +85,7 @@ class ResourceTest extends \PHPUnit_Framework_TestCase
             ->andReturn(500);
         $response->shouldNotHaveReceived('getBody');
 
-        // Should throw exception
+        // Should throws exception
         new Resource($response);
     }
 
@@ -102,7 +102,7 @@ class ResourceTest extends \PHPUnit_Framework_TestCase
         $response->shouldReceive('getBody')
             ->andReturn(json_encode($this->malformedBody));
 
-        // Should throw exception
+        // Should throws exception
         new Resource($response);
     }
 
