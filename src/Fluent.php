@@ -371,25 +371,25 @@ class Fluent
      */
     public function __construct(MethodCaller $methodCaller)
     {
-        $this->methodSegments = ['flickr'];
         $this->methodCaller = $methodCaller;
+        $this->reset();
     }
 
     /**
      * @param $method
-     * @param $arguments
+     * @param $args
      * @return $this|\Fluentickr\Resource
      */
-    public function __call($method, array $arguments)
+    public function __call($method, $args)
     {
         $this->methodSegments[] = $method;
 
         if ($this->isClosingMethod($method)) {
-            $methodArguments = count($arguments) > 1 ? $arguments[0] : [];
-            $method = new Method($this->methodCaller, implode('.', $this->methodSegments));
-            $this->methodSegments = ['flickr'];
+            $arguments = count($args) >= 1 ? $args[0] : [];
+            $method = MethodFactory::create($this->getCallingMethodName());
+            $this->reset();
 
-            return $method->call($methodArguments);
+            return $this->methodCaller->call($method, $arguments);
         }
 
         return $this;
@@ -398,6 +398,16 @@ class Fluent
     protected function isClosingMethod($name)
     {
         return in_array($name, $this->closingMethods, true);
+    }
+
+    protected function getCallingMethodName()
+    {
+        return implode('.', $this->methodSegments);
+    }
+
+    protected function reset()
+    {
+        $this->methodSegments = ['flickr'];
     }
 
 }

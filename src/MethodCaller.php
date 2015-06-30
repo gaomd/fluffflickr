@@ -2,11 +2,15 @@
 
 namespace Fluentickr;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\Request;
+use Psr\Http\Message\ResponseInterface;
 
 class MethodCaller
 {
+
+    /**
+     * @var \Fluentickr\HttpClient
+     */
+    protected $httpClient;
 
     /**
      * @var string
@@ -60,6 +64,14 @@ class MethodCaller
     ];
 
     /**
+     * @param \Fluentickr\HttpClient $httpClient
+     */
+    public function __construct(HttpClient $httpClient)
+    {
+        $this->httpClient = $httpClient;
+    }
+
+    /**
      * @param \Fluentickr\Method $method
      * @param array $arguments
      * @return \Fluentickr\Resource
@@ -67,28 +79,24 @@ class MethodCaller
     public function call(Method $method, array $arguments = [])
     {
         $httpMethod = $this->determineHttpMethod($method);
-        $queryParams = array_merge(
+        $httpQueryParams = array_merge(
             $arguments,
-            ['method' => $method->name()],
-            $this->getOverrideArguments()
+            ['method' => $method->getName()],
+            $this->getOverrideQueryParams()
         );
-        $url = $this->baseUrl . '?' . \GuzzleHttp\Psr7\build_query($queryParams);
+        $response = $this->httpClient->request($httpMethod, $this->baseUrl, $httpQueryParams);
 
-        $client = new Client();
-        $request = new Request($httpMethod, $url);
-        $response = $client->send($request);
-
-        return new Resource($response, $method, $arguments);
+        return ResourceFactory::create($response);
     }
 
     /**
      * @return array
      */
-    protected function getOverrideArguments()
+    protected function getOverrideQueryParams()
     {
         return [
             'api_key'        => getenv('FLICKR_API_KEY'),
-            // Get JSON response
+            // Required params to get JSON response
             'nojsoncallback' => 1,
             'format'         => 'json',
         ];
@@ -100,7 +108,7 @@ class MethodCaller
      */
     protected function determineHttpMethod(Method $method)
     {
-        return in_array($method->lastSegment(), $this->methodsRequireHttpPost, true) ? 'POST' : 'GET';
+        return in_array($method->getLastSegment(), $this->methodsRequireHttpPost, true) ? 'POST' : 'GET';
     }
 
 }

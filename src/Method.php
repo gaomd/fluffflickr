@@ -6,29 +6,26 @@ class Method
 {
 
     /**
-     * @var \Fluentickr\MethodCaller
-     */
-    protected $methodCaller;
-
-    /**
      * @var string
      */
     protected $name;
 
     /**
-     * @param \Fluentickr\MethodCaller $methodCaller
      * @param string $name
      */
-    public function __construct(MethodCaller $methodCaller, $name)
+    public function __construct($name)
     {
-        $this->methodCaller = $methodCaller;
+        if (!$this->validMethodName($name)) {
+            throw new \InvalidArgumentException('Invalid method name.');
+        }
+
         $this->name = $name;
     }
 
     /**
      * @return string
      */
-    public function name()
+    public function getName()
     {
         return $this->name;
     }
@@ -36,18 +33,16 @@ class Method
     /**
      * @return string
      */
-    public function lastSegment()
+    public function getLastSegment()
     {
-        return end($this->name);
+        $segments = explode('.', $this->getName());
+
+        return array_pop($segments);
     }
 
-    /**
-     * @param array $arguments
-     * @return \Fluentickr\Resource
-     */
-    public function call(array $arguments = [])
+    protected function validMethodName($name)
     {
-        return $this->methodCaller->call($this, $arguments);
+        return preg_match('/^flickr(\.[a-zA-Z]+)+$/', $name) === 1;
     }
 
 }

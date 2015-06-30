@@ -9,7 +9,7 @@ $dotEnv->required('FLICKR_API_KEY');
 $flickr = Fluentickr\Factory::create();
 $results = $flickr->test()->echo(['foo' => 'bar']);
 
-if ($results->ok() && isset($results['foo']['_content']) && $results['foo']['_content'] === 'bar') {
+if (isset($results['foo']['_content']) && $results['foo']['_content'] === 'bar') {
     echo "=======\nPasses!\n=======\n";
 }
 

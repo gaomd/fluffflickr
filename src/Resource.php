@@ -13,30 +13,16 @@ class Resource implements \ArrayAccess
     protected $response;
 
     /**
-     * @var \Fluentickr\Method
-     */
-    protected $method;
-
-    /**
-     * @var array
-     */
-    protected $arguments;
-
-    /**
      * @var array
      */
     protected $container = [];
 
     /**
-     * @param \Fluentickr\Method $method
-     * @param array $arguments
      * @param \Psr\Http\Message\ResponseInterface $response
      */
-    public function __construct(ResponseInterface $response, Method $method, array $arguments)
+    public function __construct(ResponseInterface $response)
     {
         $this->response = $response;
-        $this->method = $method;
-        $this->arguments = $arguments;
 
         $this->decodeResponse();
     }
@@ -57,18 +43,10 @@ class Resource implements \ArrayAccess
         }
 
         if ($data['stat'] === 'fail') {
-            throw new FlickrErrorException($data['message'], $data['code']);
+            throw new FlickrErrorException($data['message'], (int) $data['code']);
         }
 
         $this->container = $data;
-    }
-
-    /**
-     * @return bool
-     */
-    public function ok()
-    {
-        return (isset($this->container['stat']) && $this->container['stat'] === 'ok');
     }
 
     /**
@@ -112,4 +90,5 @@ class Resource implements \ArrayAccess
             ? $this->container
             : [];
     }
+
 }
