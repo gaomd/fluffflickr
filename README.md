@@ -6,7 +6,7 @@
 [![Quality Score](https://img.shields.io/scrutinizer/g/gaomd/fluentickr.svg?style=flat-square)](https://scrutinizer-ci.com/g/gaomd/fluentickr)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 
-Fluentickr is a fluent interface to [Flickr API](https://www.flickr.com/services/api/) written in PHP..
+Fluentickr is a fluent interface to [Flickr API](https://www.flickr.com/services/api/) written in PHP.
 
 ## TODOs
 
