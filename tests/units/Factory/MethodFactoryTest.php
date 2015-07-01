@@ -1,6 +1,6 @@
 <?php
 
-namespace Fluentickr\Tests\Units;
+namespace Fluentickr\Tests\Units\Factory;
 
 use Fluentickr\Factory\MethodFactory;
 use Fluentickr\Method;

@@ -1,11 +1,11 @@
 <?php
 
-namespace Fluentickr\Tests\Units;
+namespace Fluentickr\Tests\Units\Factory;
 
 use Fluentickr\Factory\FluentFactory;
 use Fluentickr\Fluent;
 
-class FactoryTest extends \PHPUnit_Framework_TestCase
+class FluentFactoryTest extends \PHPUnit_Framework_TestCase
 {
 
     public function testCreate()

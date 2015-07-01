@@ -1,6 +1,6 @@
 <?php
 
-namespace Fluentickr\Tests\Units;
+namespace Fluentickr\Tests\Units\Factory;
 
 use Mockery as m;
 
