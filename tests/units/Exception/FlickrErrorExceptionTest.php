@@ -7,7 +7,7 @@ use Fluentickr\Exception\FlickrErrorException;
 class FlickrErrorExceptionTest extends \PHPUnit_Framework_TestCase
 {
 
-    public function test()
+    public function testThrowsException()
     {
         $this->setExpectedException(FlickrErrorException::class);
 
