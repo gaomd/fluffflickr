@@ -109,3 +109,8 @@ checks:
         avoid_perl_style_comments: true
         avoid_multiple_statements_on_same_line: true
         avoid_closing_tag: true
+
+tools:
+    external_code_coverage:
+        timeout: 1200
+        runs: 3
