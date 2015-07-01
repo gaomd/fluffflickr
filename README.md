@@ -7,3 +7,11 @@
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 
 Fluentickr is a fluent interface to [Flickr API](https://www.flickr.com/services/api/) written in PHP..
+
+## TODOs
+
+- [ ] Think a better name
+- [ ] Add to Packagist/Composer
+- [ ] Authentication with Flickr API
+- [ ] Photo Upload API
+- [ ] Documentation
