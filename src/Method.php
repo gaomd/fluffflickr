@@ -50,5 +50,4 @@ class Method implements MethodInterface
     {
         return preg_match('/^flickr(\.[a-zA-Z]+)+$/', $name) === 1;
     }
-
 }

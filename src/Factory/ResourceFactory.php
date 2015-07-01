@@ -16,5 +16,4 @@ class ResourceFactory
     {
         return new Resource($response);
     }
-
 }

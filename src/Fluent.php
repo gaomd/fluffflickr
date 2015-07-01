@@ -456,5 +456,4 @@ class Fluent
     {
         $this->methodSegments = ['flickr'];
     }
-
 }

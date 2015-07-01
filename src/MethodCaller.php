@@ -111,5 +111,4 @@ class MethodCaller implements MethodCallerInterface
     {
         return in_array($method->getLastSegment(), $this->methodsRequireHttpPost, true) ? 'POST' : 'GET';
     }
-
 }

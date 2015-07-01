@@ -28,5 +28,4 @@ class HttpClient implements HttpClientInterface
     {
         return $this->client->request($method, $url, ['query' => $queryParams]);
     }
-
 }

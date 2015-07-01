@@ -15,5 +15,4 @@ class MethodFactory
     {
         return new Method($name);
     }
-
 }
