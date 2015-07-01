@@ -6,7 +6,7 @@ $dotEnv = new Dotenv\Dotenv(dirname(dirname(__FILE__)));
 $dotEnv->load();
 $dotEnv->required('FLICKR_API_KEY');
 
-$flickr = Fluentickr\Factory::create();
+$flickr = Fluentickr\Factory\FluentFactory::create();
 $results = $flickr->test()->echo(['foo' => 'bar']);
 
 if (isset($results['foo']['_content']) && $results['foo']['_content'] === 'bar') {

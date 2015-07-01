@@ -1,7 +1,8 @@
 <?php
 
-namespace Fluentickr;
+namespace Fluentickr\Factory;
 
+use Fluentickr\Resource;
 use Psr\Http\Message\ResponseInterface;
 
 class ResourceFactory

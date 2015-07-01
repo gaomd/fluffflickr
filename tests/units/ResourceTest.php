@@ -3,11 +3,10 @@
 namespace Fluentickr\Tests\Units;
 
 use Exception;
-use Fluentickr\FlickrErrorException;
+use Fluentickr\Exception\FlickrErrorException;
 use Fluentickr\Resource;
 use Mockery as m;
 use Psr\Http\Message\ResponseInterface;
-use RuntimeException;
 
 class ResourceTest extends \PHPUnit_Framework_TestCase
 {
@@ -76,7 +75,7 @@ class ResourceTest extends \PHPUnit_Framework_TestCase
     public function testConstructFailedRequestThrowsException()
     {
         $this->setExpectedException(
-            RuntimeException::class,
+            \RuntimeException::class,
             'Failed to call Flickr API.'
         );
 
@@ -92,7 +91,7 @@ class ResourceTest extends \PHPUnit_Framework_TestCase
     public function testConstructUnlikelyGonnaHappenMalformedBodyThrowsException()
     {
         $this->setExpectedException(
-            RuntimeException::class,
+            \RuntimeException::class,
             'Unable to parse Flickr API response.'
         );
 

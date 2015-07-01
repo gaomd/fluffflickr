@@ -2,8 +2,8 @@
 
 namespace Fluentickr\Tests\Units;
 
+use Fluentickr\Factory\MethodFactory;
 use Fluentickr\Method;
-use Fluentickr\MethodFactory;
 
 class MethodFactoryTest extends \PHPUnit_Framework_TestCase
 {

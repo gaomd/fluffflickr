@@ -2,7 +2,7 @@
 
 namespace Fluentickr\Tests\Units;
 
-use Fluentickr\FlickrErrorException;
+use Fluentickr\Exception\FlickrErrorException;
 
 class FlickrErrorExceptionTest extends \PHPUnit_Framework_TestCase
 {

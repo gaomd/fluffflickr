@@ -2,9 +2,11 @@
 
 namespace Fluentickr;
 
+use Fluentickr\Contracts\ResourceInterface;
+use Fluentickr\Exception\FlickrErrorException;
 use Psr\Http\Message\ResponseInterface;
 
-class Resource implements \ArrayAccess
+class Resource implements ResourceInterface
 {
 
     /**
@@ -82,7 +84,7 @@ class Resource implements \ArrayAccess
     }
 
     /**
-     * @return array
+     * {@inheritdoc}
      */
     public function toArray()
     {

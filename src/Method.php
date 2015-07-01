@@ -2,7 +2,9 @@
 
 namespace Fluentickr;
 
-class Method
+use Fluentickr\Contracts\MethodInterface;
+
+class Method implements MethodInterface
 {
 
     /**
@@ -23,7 +25,7 @@ class Method
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getName()
     {
@@ -31,7 +33,7 @@ class Method
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getLastSegment()
     {
@@ -40,6 +42,10 @@ class Method
         return array_pop($segments);
     }
 
+    /**
+     * @param $name
+     * @return bool
+     */
     protected function validMethodName($name)
     {
         return preg_match('/^flickr(\.[a-zA-Z]+)+$/', $name) === 1;

@@ -2,11 +2,16 @@
 
 namespace Fluentickr;
 
-class MethodCaller
+use Fluentickr\Contracts\HttpClientInterface;
+use Fluentickr\Contracts\MethodCallerInterface;
+use Fluentickr\Contracts\MethodInterface;
+use Fluentickr\Factory\ResourceFactory;
+
+class MethodCaller implements MethodCallerInterface
 {
 
     /**
-     * @var \Fluentickr\HttpClient
+     * @var \Fluentickr\Contracts\HttpClientInterface
      */
     protected $httpClient;
 
@@ -62,19 +67,17 @@ class MethodCaller
     ];
 
     /**
-     * @param \Fluentickr\HttpClient $httpClient
+     * @param \Fluentickr\Contracts\HttpClientInterface $httpClient
      */
-    public function __construct(HttpClient $httpClient)
+    public function __construct(HttpClientInterface $httpClient)
     {
         $this->httpClient = $httpClient;
     }
 
     /**
-     * @param \Fluentickr\Method $method
-     * @param array $arguments
-     * @return \Fluentickr\Resource
+     * {@inheritdoc}
      */
-    public function call(Method $method, array $arguments = [])
+    public function call(MethodInterface $method, array $arguments = [])
     {
         $httpMethod = $this->determineHttpMethod($method);
         $httpQueryParams = array_merge(
@@ -101,10 +104,10 @@ class MethodCaller
     }
 
     /**
-     * @param \Fluentickr\Method $method
+     * @param \Fluentickr\Contracts\MethodInterface $method
      * @return string
      */
-    protected function determineHttpMethod(Method $method)
+    protected function determineHttpMethod(MethodInterface $method)
     {
         return in_array($method->getLastSegment(), $this->methodsRequireHttpPost, true) ? 'POST' : 'GET';
     }

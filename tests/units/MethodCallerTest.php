@@ -2,10 +2,10 @@
 
 namespace Fluentickr\Tests\Units;
 
+use Fluentickr\Factory\ResourceFactory;
 use Fluentickr\HttpClient;
 use Fluentickr\Method;
 use Fluentickr\MethodCaller;
-use Fluentickr\ResourceFactory;
 use Mockery as m;
 use Psr\Http\Message\ResponseInterface;
 

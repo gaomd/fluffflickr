@@ -2,10 +2,10 @@
 
 namespace Fluentickr\Tests\Units;
 
+use Fluentickr\Factory\MethodFactory;
 use Fluentickr\Fluent;
 use Fluentickr\Method;
 use Fluentickr\MethodCaller;
-use Fluentickr\MethodFactory;
 use Mockery as m;
 
 class FluentTest extends \PHPUnit_Framework_TestCase

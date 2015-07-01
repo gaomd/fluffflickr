@@ -1,6 +1,8 @@
 <?php
 
-namespace Fluentickr;
+namespace Fluentickr\Factory;
+
+use Fluentickr\Method;
 
 class MethodFactory
 {

@@ -2,29 +2,27 @@
 
 namespace Fluentickr;
 
-use GuzzleHttp\Client;
+use Fluentickr\Contracts\HttpClientInterface;
+use GuzzleHttp\ClientInterface;
 
-class HttpClient
+class HttpClient implements HttpClientInterface
 {
 
     /**
-     * @var \GuzzleHttp\Client
+     * @var \GuzzleHttp\ClientInterface
      */
     protected $client;
 
     /**
-     * @param \GuzzleHttp\Client $client
+     * @param \GuzzleHttp\ClientInterface $client
      */
-    public function __construct(Client $client)
+    public function __construct(ClientInterface $client)
     {
         $this->client = $client;
     }
 
     /**
-     * @param $method
-     * @param $url
-     * @param array $queryParams
-     * @return \Psr\Http\Message\ResponseInterface
+     * {@inheritdoc}
      */
     public function request($method, $url, array $queryParams = [])
     {

@@ -3,7 +3,6 @@
 namespace Fluentickr\Tests\Units;
 
 use Fluentickr\Method;
-use InvalidArgumentException;
 
 class MethodTest extends \PHPUnit_Framework_TestCase
 {
@@ -19,7 +18,7 @@ class MethodTest extends \PHPUnit_Framework_TestCase
 
     public function testInvalidName()
     {
-        $this->setExpectedException(InvalidArgumentException::class, 'Invalid method name.');
+        $this->setExpectedException(\InvalidArgumentException::class, 'Invalid method name.');
 
         // Should throws exception
         new Method('flickr/foo/bar');
@@ -27,7 +26,7 @@ class MethodTest extends \PHPUnit_Framework_TestCase
 
     public function testInvalidName2()
     {
-        $this->setExpectedException(InvalidArgumentException::class, 'Invalid method name.');
+        $this->setExpectedException(\InvalidArgumentException::class, 'Invalid method name.');
 
         // Should throws exception
         new Method('flickr.foo.bar.');
@@ -35,7 +34,7 @@ class MethodTest extends \PHPUnit_Framework_TestCase
 
     public function testInvalidName3()
     {
-        $this->setExpectedException(InvalidArgumentException::class, 'Invalid method name.');
+        $this->setExpectedException(\InvalidArgumentException::class, 'Invalid method name.');
 
         // Should throws exception
         new Method('.flickr.foo.bar.');
