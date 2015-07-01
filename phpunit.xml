@@ -2,17 +2,33 @@
 <!-- static method mock in some tests requires `processIsolation="true"` -->
 <phpunit backupGlobals="false"
          backupStaticAttributes="false"
-         bootstrap="vendor/autoload.php"
+         bootstrap="./vendor/autoload.php"
          colors="true"
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
          processIsolation="true"
          stopOnFailure="false"
-         syntaxCheck="false">
+         syntaxCheck="true"
+         verbose="true">
     <testsuites>
         <testsuite name="\Fluentickr tests">
             <directory>./tests/</directory>
         </testsuite>
     </testsuites>
+    <filter>
+        <!-- @todo: <whitelist> not working for me -->
+        <blacklist>
+            <directory>./vendor/</directory>
+            <directory>./tests/</directory>
+        </blacklist>
+    </filter>
+    <listeners>
+        <listener class="Mockery\Adapter\Phpunit\TestListener"></listener>
+    </listeners>
+    <logging>
+        <log type="coverage-text" target="php://stdout" showUncoveredFiles="true"/>
+        <log type="coverage-html" target="build/coverage" showUncoveredFiles="true"/>
+        <log type="coverage-clover" target="build/coverage.xml" showUncoveredFiles="true"/>
+    </logging>
 </phpunit>
