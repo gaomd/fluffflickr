@@ -1,9 +1,9 @@
 <?php
 
-namespace Fluentickr;
+namespace Fluffflickr;
 
-use Fluentickr\Contracts\ResourceInterface;
-use Fluentickr\Exception\FlickrErrorException;
+use Fluffflickr\Contracts\ResourceInterface;
+use Fluffflickr\Exception\FlickrErrorException;
 use Psr\Http\Message\ResponseInterface;
 
 class Resource implements ResourceInterface

@@ -1,11 +1,11 @@
 <?php
 
-namespace Fluentickr\Tests\Units;
+namespace Fluffflickr\Tests\Units;
 
-use Fluentickr\Factory\MethodFactory;
-use Fluentickr\Fluent;
-use Fluentickr\Method;
-use Fluentickr\MethodCaller;
+use Fluffflickr\Factory\MethodFactory;
+use Fluffflickr\Fluent;
+use Fluffflickr\Method;
+use Fluffflickr\MethodCaller;
 use Mockery as m;
 
 class FluentTest extends \PHPUnit_Framework_TestCase

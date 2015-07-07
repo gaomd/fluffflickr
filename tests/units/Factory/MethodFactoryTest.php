@@ -1,9 +1,9 @@
 <?php
 
-namespace Fluentickr\Tests\Units\Factory;
+namespace Fluffflickr\Tests\Units\Factory;
 
-use Fluentickr\Factory\MethodFactory;
-use Fluentickr\Method;
+use Fluffflickr\Factory\MethodFactory;
+use Fluffflickr\Method;
 
 class MethodFactoryTest extends \PHPUnit_Framework_TestCase
 {

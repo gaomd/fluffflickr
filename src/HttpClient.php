@@ -1,8 +1,8 @@
 <?php
 
-namespace Fluentickr;
+namespace Fluffflickr;
 
-use Fluentickr\Contracts\HttpClientInterface;
+use Fluffflickr\Contracts\HttpClientInterface;
 use GuzzleHttp\ClientInterface;
 
 class HttpClient implements HttpClientInterface

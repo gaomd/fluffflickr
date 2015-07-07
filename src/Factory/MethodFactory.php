@@ -1,15 +1,15 @@
 <?php
 
-namespace Fluentickr\Factory;
+namespace Fluffflickr\Factory;
 
-use Fluentickr\Method;
+use Fluffflickr\Method;
 
 class MethodFactory
 {
 
     /**
      * @param $name
-     * @return \Fluentickr\Method
+     * @return \Fluffflickr\Method
      */
     public static function create($name)
     {

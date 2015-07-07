@@ -1,6 +1,6 @@
 <?php
 
-namespace Fluentickr\Contracts;
+namespace Fluffflickr\Contracts;
 
 interface ResourceInterface extends \ArrayAccess
 {

@@ -1,17 +1,17 @@
 <?php
 
-namespace Fluentickr;
+namespace Fluffflickr;
 
-use Fluentickr\Contracts\HttpClientInterface;
-use Fluentickr\Contracts\MethodCallerInterface;
-use Fluentickr\Contracts\MethodInterface;
-use Fluentickr\Factory\ResourceFactory;
+use Fluffflickr\Contracts\HttpClientInterface;
+use Fluffflickr\Contracts\MethodCallerInterface;
+use Fluffflickr\Contracts\MethodInterface;
+use Fluffflickr\Factory\ResourceFactory;
 
 class MethodCaller implements MethodCallerInterface
 {
 
     /**
-     * @var \Fluentickr\Contracts\HttpClientInterface
+     * @var \Fluffflickr\Contracts\HttpClientInterface
      */
     protected $httpClient;
 
@@ -67,7 +67,7 @@ class MethodCaller implements MethodCallerInterface
     ];
 
     /**
-     * @param \Fluentickr\Contracts\HttpClientInterface $httpClient
+     * @param \Fluffflickr\Contracts\HttpClientInterface $httpClient
      */
     public function __construct(HttpClientInterface $httpClient)
     {
@@ -104,7 +104,7 @@ class MethodCaller implements MethodCallerInterface
     }
 
     /**
-     * @param \Fluentickr\Contracts\MethodInterface $method
+     * @param \Fluffflickr\Contracts\MethodInterface $method
      * @return string
      */
     protected function determineHttpMethod(MethodInterface $method)

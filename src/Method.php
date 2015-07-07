@@ -1,8 +1,8 @@
 <?php
 
-namespace Fluentickr;
+namespace Fluffflickr;
 
-use Fluentickr\Contracts\MethodInterface;
+use Fluffflickr\Contracts\MethodInterface;
 
 class Method implements MethodInterface
 {

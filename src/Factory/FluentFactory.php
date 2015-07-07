@@ -1,17 +1,17 @@
 <?php
 
-namespace Fluentickr\Factory;
+namespace Fluffflickr\Factory;
 
-use Fluentickr\Fluent;
-use Fluentickr\HttpClient;
-use Fluentickr\MethodCaller;
+use Fluffflickr\Fluent;
+use Fluffflickr\HttpClient;
+use Fluffflickr\MethodCaller;
 use GuzzleHttp\Client;
 
 class FluentFactory
 {
 
     /**
-     * @return \Fluentickr\Fluent
+     * @return \Fluffflickr\Fluent
      */
     public static function create()
     {

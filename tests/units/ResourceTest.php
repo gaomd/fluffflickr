@@ -1,10 +1,10 @@
 <?php
 
-namespace Fluentickr\Tests\Units;
+namespace Fluffflickr\Tests\Units;
 
 use Exception;
-use Fluentickr\Exception\FlickrErrorException;
-use Fluentickr\Resource;
+use Fluffflickr\Exception\FlickrErrorException;
+use Fluffflickr\Resource;
 use Mockery as m;
 use Psr\Http\Message\ResponseInterface;
 

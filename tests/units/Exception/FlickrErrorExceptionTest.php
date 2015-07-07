@@ -1,8 +1,8 @@
 <?php
 
-namespace Fluentickr\Tests\Units\Exception;
+namespace Fluffflickr\Tests\Units\Exception;
 
-use Fluentickr\Exception\FlickrErrorException;
+use Fluffflickr\Exception\FlickrErrorException;
 
 class FlickrErrorExceptionTest extends \PHPUnit_Framework_TestCase
 {

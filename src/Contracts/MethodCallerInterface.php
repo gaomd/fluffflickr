@@ -1,14 +1,14 @@
 <?php
 
-namespace Fluentickr\Contracts;
+namespace Fluffflickr\Contracts;
 
 interface MethodCallerInterface
 {
 
     /**
-     * @param \Fluentickr\Contracts\MethodInterface $method
+     * @param \Fluffflickr\Contracts\MethodInterface $method
      * @param array $arguments
-     * @return \Fluentickr\Contracts\ResourceInterface
+     * @return \Fluffflickr\Contracts\ResourceInterface
      */
     public function call(MethodInterface $method, array $arguments = []);
 }

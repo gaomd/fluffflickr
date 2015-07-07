@@ -1,9 +1,9 @@
 <?php
 
-namespace Fluentickr\Tests\Units\Factory;
+namespace Fluffflickr\Tests\Units\Factory;
 
-use Fluentickr\Factory\FluentFactory;
-use Fluentickr\Fluent;
+use Fluffflickr\Factory\FluentFactory;
+use Fluffflickr\Fluent;
 
 class FluentFactoryTest extends \PHPUnit_Framework_TestCase
 {

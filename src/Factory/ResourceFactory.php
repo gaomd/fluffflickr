@@ -1,8 +1,8 @@
 <?php
 
-namespace Fluentickr\Factory;
+namespace Fluffflickr\Factory;
 
-use Fluentickr\Resource;
+use Fluffflickr\Resource;
 use Psr\Http\Message\ResponseInterface;
 
 class ResourceFactory
@@ -10,7 +10,7 @@ class ResourceFactory
 
     /**
      * @param \Psr\Http\Message\ResponseInterface $response
-     * @return \Fluentickr\Resource
+     * @return \Fluffflickr\Resource
      */
     public static function create(ResponseInterface $response)
     {

@@ -1,11 +1,11 @@
 <?php
 
-namespace Fluentickr\Tests\Units;
+namespace Fluffflickr\Tests\Units;
 
-use Fluentickr\Factory\ResourceFactory;
-use Fluentickr\HttpClient;
-use Fluentickr\Method;
-use Fluentickr\MethodCaller;
+use Fluffflickr\Factory\ResourceFactory;
+use Fluffflickr\HttpClient;
+use Fluffflickr\Method;
+use Fluffflickr\MethodCaller;
 use Mockery as m;
 use Psr\Http\Message\ResponseInterface;
 

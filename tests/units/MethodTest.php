@@ -1,8 +1,8 @@
 <?php
 
-namespace Fluentickr\Tests\Units;
+namespace Fluffflickr\Tests\Units;
 
-use Fluentickr\Method;
+use Fluffflickr\Method;
 
 class MethodTest extends \PHPUnit_Framework_TestCase
 {

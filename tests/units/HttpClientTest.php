@@ -1,8 +1,8 @@
 <?php
 
-namespace Fluentickr\Tests\Units;
+namespace Fluffflickr\Tests\Units;
 
-use Fluentickr\HttpClient;
+use Fluffflickr\HttpClient;
 use GuzzleHttp\Client;
 use Mockery as m;
 

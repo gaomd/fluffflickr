@@ -1,5 +1,5 @@
 {
-    "name": "gaomd/fluentickr",
+    "name": "gaomd/fluffflickr",
     "type": "library",
     "description": "A fluent interface to Flickr API.",
     "keywords": [
@@ -18,7 +18,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Fluentickr\\": "src/"
+            "Fluffflickr\\": "src/"
         }
     },
     "require": {
